@@ -1,36 +1,36 @@
-# 分散型クラウドストレージ (Distributed Cloud Storage)
+# Distributed Cloud Storage
 
-ブロックチェーン技術を活用した分散型クラウドストレージシステム
+A distributed cloud storage system leveraging blockchain technology
 
-## 概要
+## Overview
 
-このプロジェクトは、ブロックチェーンとP2P技術を組み合わせて、中央集権的なサーバーに依存しない分散型クラウドストレージシステムを構築します。
+This project builds a distributed cloud storage system that combines blockchain and P2P technologies, creating a system that doesn't rely on centralized servers.
 
-### 主要機能
+### Key Features
 
-- **分散ファイル保存**: ファイルを暗号化して複数ノードに分散保存
-- **ブロックチェーン管理**: ファイルメタデータとアクセス権限をブロックチェーンで管理
-- **P2Pネットワーク**: ピアツーピア通信による高い可用性
-- **インセンティブシステム**: ストレージ提供者への報酬システム
-- **冗長性**: データ損失を防ぐための複製機能
+- **Distributed File Storage**: Encrypt files and store them distributed across multiple nodes
+- **Blockchain Management**: Manage file metadata and access permissions on blockchain
+- **P2P Network**: High availability through peer-to-peer communication
+- **Incentive System**: Reward system for storage providers
+- **Redundancy**: Replication features to prevent data loss
 
-## 技術スタック
+## Technology Stack
 
-- **Go**: バックエンド開発言語
-- **libp2p**: P2Pネットワーク通信
-- **Ethereum/Polygon**: スマートコントラクト
-- **IPFS**: 分散ファイルシステム
-- **Gin**: REST APIフレームワーク
+- **Go**: Backend development language
+- **libp2p**: P2P network communication
+- **Ethereum/Polygon**: Smart contracts
+- **IPFS**: Distributed file system
+- **Gin**: REST API framework
 
-## クイックスタート
+## Quick Start
 
-### 前提条件
+### Prerequisites
 
-- Go 1.21以上
+- Go 1.21+
 - Docker & Docker Compose
 - Make
 
-### インストール
+### Installation
 
 ```bash
 git clone https://github.com/nshmdayo/Distributed-cloud-storage-sample.git
@@ -38,35 +38,35 @@ cd Distributed-cloud-storage-sample
 make setup
 ```
 
-### ストレージノード起動
+### Start Storage Node
 
 ```bash
 make run-node
 ```
 
-### API サーバー起動
+### Start API Server
 
 ```bash
 make run-api
 ```
 
-## プロジェクト構造
+## Project Structure
 
 ```
 /
-├── cmd/              # 実行可能ファイル
-├── internal/         # 内部パッケージ
-├── pkg/             # 公開パッケージ
-├── contracts/       # スマートコントラクト
-├── scripts/         # ビルド・デプロイスクリプト
-├── docs/           # ドキュメント
-└── tests/          # テストファイル
+├── cmd/              # Executables
+├── internal/         # Internal packages
+├── pkg/             # Public packages
+├── contracts/       # Smart contracts
+├── scripts/         # Build and deploy scripts
+├── docs/           # Documentation
+└── tests/          # Test files
 ```
 
-## 貢献
+## Contributing
 
-プロジェクトへの貢献を歓迎します。詳細は [CONTRIBUTING.md](CONTRIBUTING.md) をご覧ください。
+We welcome contributions to this project. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-## ライセンス
+## License
 
-このプロジェクトは MIT ライセンスの下で公開されています。詳細は [LICENSE](LICENSE) ファイルをご覧ください。
+This project is published under the MIT License. See the [LICENSE](LICENSE) file for details.

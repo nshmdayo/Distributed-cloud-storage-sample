@@ -1,184 +1,184 @@
-# 分散型クラウドストレージ開発ガイドライン
+# Distributed Cloud Storage Development Guidelines
 
-## プロジェクト概要
+## Project Overview
 
-ブロックチェーン技術を活用した分散型クラウドストレージシステムの開発
+Development of a distributed cloud storage system leveraging blockchain technology
 
-### 主要機能
-- ファイルの暗号化・分散保存
-- ブロックチェーンベースのメタデータ管理
-- P2Pネットワークによるファイル共有
-- 冗長性による高可用性
-- インセンティブメカニズム
+### Key Features
+- File encryption and distributed storage
+- Blockchain-based metadata management
+- P2P network file sharing
+- High availability through redundancy
+- Incentive mechanisms
 
-## 技術スタック
+## Technology Stack
 
-### バックエンド
-- **言語**: Go
-- **ブロックチェーン**: Ethereum/Polygon（スマートコントラクト）
+### Backend
+- **Language**: Go
+- **Blockchain**: Ethereum/Polygon (Smart Contracts)
 - **P2P**: libp2p
-- **暗号化**: AES-256, ECDSA
-- **ストレージ**: IPFS + 独自分散ストレージレイヤー
-- **データベース**: LevelDB/BadgerDB
+- **Encryption**: AES-256, ECDSA
+- **Storage**: IPFS + Custom distributed storage layer
+- **Database**: LevelDB/BadgerDB
 - **API**: RESTful API with Gin framework
 
-### フロントエンド（将来実装）
+### Frontend (Future Implementation)
 - React.js with TypeScript
 - Web3.js/ethers.js
-- MetaMask連携
+- MetaMask integration
 
-## アーキテクチャ設計
+## Architecture Design
 
-### コンポーネント構成
-1. **ストレージノード** - ファイル保存を担当
-2. **バリデータノード** - ブロックチェーン検証
-3. **クライアントAPI** - ユーザーインターフェース
-4. **スマートコントラクト** - メタデータ・インセンティブ管理
+### Component Structure
+1. **Storage Node** - Responsible for file storage
+2. **Validator Node** - Blockchain validation
+3. **Client API** - User interface
+4. **Smart Contract** - Metadata and incentive management
 
-### ディレクトリ構造
+### Directory Structure
 ```
 /
 ├── cmd/
-│   ├── node/          # ストレージノード実行
-│   ├── client/        # クライアントCLI
-│   └── validator/     # バリデータノード
+│   ├── node/          # Storage node execution
+│   ├── client/        # Client CLI
+│   └── validator/     # Validator node
 ├── internal/
-│   ├── blockchain/    # ブロックチェーン連携
-│   ├── storage/       # 分散ストレージ
-│   ├── p2p/          # P2Pネットワーク
-│   ├── crypto/       # 暗号化処理
+│   ├── blockchain/    # Blockchain integration
+│   ├── storage/       # Distributed storage
+│   ├── p2p/          # P2P network
+│   ├── crypto/       # Encryption processing
 │   ├── api/          # REST API
-│   └── config/       # 設定管理
+│   └── config/       # Configuration management
 ├── pkg/
-│   ├── types/        # 共通型定義
-│   └── utils/        # ユーティリティ
-├── contracts/        # スマートコントラクト
-├── scripts/          # デプロイ・セットアップ
-├── docs/            # ドキュメント
-└── tests/           # テストファイル
+│   ├── types/        # Common type definitions
+│   └── utils/        # Utilities
+├── contracts/        # Smart contracts
+├── scripts/          # Deploy and setup scripts
+├── docs/            # Documentation
+└── tests/           # Test files
 ```
 
-## 開発フェーズ
+## Development Phases
 
-### Phase 1: 基盤実装
-- [ ] 基本プロジェクト構造
-- [ ] P2Pネットワーク基盤
-- [ ] 基本暗号化機能
-- [ ] ローカルストレージ管理
+### Phase 1: Foundation Implementation
+- [ ] Basic project structure
+- [ ] P2P network foundation
+- [ ] Basic encryption features
+- [ ] Local storage management
 
-### Phase 2: 分散ストレージ
-- [ ] ファイル分割・復元
-- [ ] 冗長性管理
-- [ ] ノード間同期
-- [ ] 整合性検証
+### Phase 2: Distributed Storage
+- [ ] File splitting and restoration
+- [ ] Redundancy management
+- [ ] Inter-node synchronization
+- [ ] Integrity verification
 
-### Phase 3: ブロックチェーン統合
-- [ ] スマートコントラクト実装
-- [ ] メタデータ管理
-- [ ] インセンティブシステム
-- [ ] ガバナンス機能
+### Phase 3: Blockchain Integration
+- [ ] Smart contract implementation
+- [ ] Metadata management
+- [ ] Incentive system
+- [ ] Governance features
 
-### Phase 4: API・UI
-- [ ] REST API実装
-- [ ] 認証・認可
-- [ ] Web UI（React）
-- [ ] モバイルアプリ
+### Phase 4: API and UI
+- [ ] REST API implementation
+- [ ] Authentication and authorization
+- [ ] Web UI (React)
+- [ ] Mobile application
 
-## コーディング規約
+## Coding Standards
 
-### Go言語規約
-- `gofmt`による自動フォーマット
-- `golint`によるコード品質チェック
-- エラーハンドリングは必須
-- インターフェースを活用した疎結合設計
-- テストカバレッジ80%以上
+### Go Language Standards
+- Automatic formatting with `gofmt`
+- Code quality checks with `golint`
+- Error handling is mandatory
+- Loosely coupled design using interfaces
+- Test coverage above 80%
 
-### ネーミング規約
-- パッケージ: 小文字のみ
-- 関数・メソッド: CamelCase
-- 定数: ALL_CAPS with underscore
-- プライベート: 小文字開始
-- パブリック: 大文字開始
+### Naming Conventions
+- Packages: lowercase only
+- Functions/Methods: CamelCase
+- Constants: ALL_CAPS with underscore
+- Private: lowercase start
+- Public: uppercase start
 
-### セキュリティ要件
-- すべてのユーザー入力を検証
-- 暗号化キーの安全な管理
-- 定期的なセキュリティ監査
-- ゼロ知識証明の検討
+### Security Requirements
+- Validate all user inputs
+- Secure management of encryption keys
+- Regular security audits
+- Consider zero-knowledge proofs
 
-## テスト戦略
+## Testing Strategy
 
-### テスト種別
-- **ユニットテスト**: 個別関数・メソッド
-- **統合テスト**: コンポーネント間連携
-- **E2Eテスト**: エンドツーエンドシナリオ
-- **負荷テスト**: パフォーマンス検証
+### Test Types
+- **Unit Tests**: Individual functions and methods
+- **Integration Tests**: Component interaction
+- **E2E Tests**: End-to-end scenarios
+- **Load Tests**: Performance validation
 
-### テスト環境
-- ローカル開発環境
-- CI/CD（GitHub Actions）
-- テストネット（Goerli/Mumbai）
-- ステージング環境
+### Test Environments
+- Local development environment
+- CI/CD (GitHub Actions)
+- Testnet (Goerli/Mumbai)
+- Staging environment
 
-## パフォーマンス目標
+## Performance Goals
 
-- ファイルアップロード: 100MB/min
-- 同時接続ノード数: 1000+
-- データ復旧時間: 5分以内
-- 可用性: 99.9%
+- File upload: 100MB/min
+- Concurrent connected nodes: 1000+
+- Data recovery time: Within 5 minutes
+- Availability: 99.9%
 
-## モニタリング・ログ
+## Monitoring and Logging
 
-### ログレベル
-- ERROR: システムエラー
-- WARN: 警告事象
-- INFO: 一般情報
-- DEBUG: 詳細デバッグ情報
+### Log Levels
+- ERROR: System errors
+- WARN: Warning events
+- INFO: General information
+- DEBUG: Detailed debug information
 
-### メトリクス
-- ノード稼働状況
-- ストレージ使用量
-- ネットワーク帯域
-- トランザクション処理数
+### Metrics
+- Node operational status
+- Storage usage
+- Network bandwidth
+- Transaction processing count
 
-## デプロイメント
+## Deployment
 
-### 環境
+### Environments
 - Development
 - Staging
 - Production
 
-### コンテナ化
-- Docker化
-- Kubernetes対応
+### Containerization
+- Docker containerization
+- Kubernetes support
 - Helm Charts
 
-## 開発ツール
+## Development Tools
 
-### 必須ツール
+### Required Tools
 - Go 1.21+
 - Docker & Docker Compose
 - Make
 - Git
 
-### 推奨ツール
+### Recommended Tools
 - VS Code with Go extension
-- Postman（API テスト）
-- Grafana（モニタリング）
-- Jaeger（分散トレーシング）
+- Postman (API testing)
+- Grafana (monitoring)
+- Jaeger (distributed tracing)
 
-## 貢献ガイドライン
+## Contribution Guidelines
 
 ### Pull Request
-- 機能ブランチからの作成
-- 詳細な説明とテスト結果
-- レビューアー指定必須
-- CI/CDパス必須
+- Create from feature branch
+- Detailed description and test results
+- Reviewer assignment required
+- CI/CD pass required
 
-### Issue管理
-- 明確なタイトルと説明
-- 適切なラベル付け
-- 優先度設定
-- 担当者アサイン
+### Issue Management
+- Clear title and description
+- Appropriate labeling
+- Priority setting
+- Assignee assignment
 
-このガイドラインに従って、高品質で保守性の高い分散型クラウドストレージシステムを開発してください。
+Follow these guidelines to develop a high-quality, maintainable distributed cloud storage system.
