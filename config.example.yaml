@@ -1,0 +1,47 @@
+# Distributed Cloud Storage Configuration
+
+node:
+  id: "node-001"
+  data_dir: "./data"
+  storage_dir: "./data/storage"
+  max_storage: 10737418240  # 10GB in bytes
+  replicas: 3
+  chunk_size: 1048576       # 1MB in bytes
+
+api:
+  host: "localhost"
+  port: 8080
+  tls: false
+  cert_file: ""
+  key_file: ""
+
+storage:
+  backend: "filesystem"
+  path: "./data/files"
+  max_file_size: 104857600  # 100MB in bytes
+  compression: true
+
+p2p:
+  listen_addr: "/ip4/0.0.0.0/tcp/4001"
+  bootstrap_peers: []
+  max_peers: 100
+  private_key: ""
+
+crypto:
+  algorithm: "AES-256-GCM"
+  key_size: 32
+  enable_tls: true
+  tls_cert_path: ""
+  tls_key_path: ""
+
+blockchain:
+  network: "polygon-mumbai"
+  rpc_endpoint: ""
+  contract_address: ""
+  private_key: ""
+  gas_limit: 500000
+
+logging:
+  level: "info"
+  format: "json"
+  output: "stdout"

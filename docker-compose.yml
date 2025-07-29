@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/root/data
+      - ./config.yaml:/root/config.yaml
+    command: ["./api", "--config", "config.yaml"]
+    environment:
+      - DCS_LOGGING_LEVEL=info
+    networks:
+      - dcs-network
+
+  node1:
+    build: .
+    volumes:
+      - ./data/node1:/root/data
+      - ./config.yaml:/root/config.yaml
+    command: ["./node", "--config", "config.yaml"]
+    environment:
+      - DCS_NODE_ID=node-001
+      - DCS_STORAGE_PATH=/root/data/storage
+      - DCS_LOGGING_LEVEL=info
+    networks:
+      - dcs-network
+
+  node2:
+    build: .
+    volumes:
+      - ./data/node2:/root/data
+      - ./config.yaml:/root/config.yaml
+    command: ["./node", "--config", "config.yaml"]
+    environment:
+      - DCS_NODE_ID=node-002
+      - DCS_STORAGE_PATH=/root/data/storage
+      - DCS_LOGGING_LEVEL=info
+    networks:
+      - dcs-network
+
+networks:
+  dcs-network:
+    driver: bridge
+
+volumes:
+  data:
